@@ -292,7 +292,7 @@ export default function PartnersPage() {
                   color: '#D4AF37',
                 }}
               >
-                Submit Interest >
+                Submit Interest &gt;
               </button>
             </form>
           )}

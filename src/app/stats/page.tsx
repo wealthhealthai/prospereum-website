@@ -89,7 +89,7 @@ export default function StatsPage() {
                 color: '#F2EDE8',
               }}
             >
-              Open in New Tab >
+              Open in New Tab &gt;
             </a>
           </div>
         </div>

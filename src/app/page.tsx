@@ -377,7 +377,7 @@ export default function HomePage() {
                 color: '#D4AF37',
               }}
             >
-              Become a Partner >
+              Become a Partner &gt;
             </Link>
             <Link
               href="/stats"
@@ -400,9 +400,11 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             {/* Wordmark */}
             <div>
-              <div className="font-bold text-xl mb-1" style={{ color: '#D4AF37', fontWeight: 700 }}>
-                PSRE PROSPEREUM
-              </div>
+              <img
+                src="/logo-dark.png"
+                alt="Prospereum"
+                style={{ height: '30px', width: 'auto', objectFit: 'contain', marginBottom: '4px' }}
+              />
               <div style={{ color: 'rgba(255,255,255,0.40)', fontSize: '13px' }}>
                 Proof of Net Economic Contribution - Built on Base
               </div>

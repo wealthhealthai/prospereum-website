@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
@@ -26,14 +27,16 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-bold text-xl transition-opacity hover:opacity-80"
-            style={{ color: '#D4AF37' }}
-          >
-            <span className="text-2xl">PSRE</span>
-            <span>PROSPEREUM</span>
+          {/* Logo - dark mode wordmark */}
+          <Link href="/" className="flex items-center transition-opacity hover:opacity-80">
+            <Image
+              src="/logo-dark.png"
+              alt="Prospereum"
+              width={180}
+              height={40}
+              style={{ objectFit: 'contain', height: '36px', width: 'auto' }}
+              priority
+            />
           </Link>
 
           {/* Desktop nav links */}
@@ -54,7 +57,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Connect Wallet - secondary button style */}
+          {/* Connect Wallet */}
           <button
             className="hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200"
             style={{
