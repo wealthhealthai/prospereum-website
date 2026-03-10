@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Protocol Stats — Prospereum (PSRE)',
+  title: 'Protocol Stats - Prospereum (PSRE)',
   description: 'Live Prospereum protocol stats from Base Sepolia testnet. Epoch data, partner activity, staking metrics.',
 };
 
@@ -38,7 +38,7 @@ export default function StatsPage() {
         </p>
       </div>
 
-      {/* Dashboard iframe — dark container */}
+      {/* Dashboard iframe - dark container */}
       <div
         className="w-full"
         style={{ borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
@@ -63,7 +63,7 @@ export default function StatsPage() {
         <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
           <div>
             <p style={{ color: 'rgba(255,255,255,0.40)', fontSize: '14px' }}>
-              📡 Live data from{' '}
+               Live data from{' '}
               <a
                 href="https://wealthhealthai.github.io/prospereum-protocol/"
                 target="_blank"
@@ -89,7 +89,7 @@ export default function StatsPage() {
                 color: '#F2EDE8',
               }}
             >
-              Open in New Tab ↗
+              Open in New Tab >
             </a>
           </div>
         </div>
@@ -97,10 +97,10 @@ export default function StatsPage() {
         {/* Stat cards */}
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { label: 'Current Epoch', value: 'Live ↗' },
-            { label: 'Total PSRE Emitted', value: 'Live ↗' },
-            { label: 'Active Partners', value: 'Live ↗' },
-            { label: 'Total Staked', value: 'Live ↗' },
+            { label: 'Current Epoch', value: 'Live >' },
+            { label: 'Total PSRE Emitted', value: 'Live >' },
+            { label: 'Active Partners', value: 'Live >' },
+            { label: 'Total Staked', value: 'Live >' },
           ].map((s) => (
             <div
               key={s.label}

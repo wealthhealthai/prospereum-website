@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Whitepaper — Prospereum Protocol v2.3',
+  title: 'Whitepaper - Prospereum Protocol v2.3',
   description:
-    'Read the Prospereum (PSRE) whitepaper. Proof of Net Economic Contribution — demand-bounded, scarcity-controlled behavioral mining on Base.',
+    'Read the Prospereum (PSRE) whitepaper. Proof of Net Economic Contribution - demand-bounded, scarcity-controlled behavioral mining on Base.',
 };
 
 export default function WhitepaperPage() {
@@ -29,7 +29,7 @@ export default function WhitepaperPage() {
             v2.3
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.50)', fontSize: '16px' }}>
-            March 6, 2026 · Proof of Net Economic Contribution
+            March 6, 2026 - Proof of Net Economic Contribution
           </p>
 
           <a
@@ -42,7 +42,7 @@ export default function WhitepaperPage() {
               color: '#D4AF37',
             }}
           >
-            ↓ Download PDF
+            v Download PDF
           </a>
         </div>
 
@@ -77,7 +77,7 @@ export default function WhitepaperPage() {
               <strong style={{ color: '#ffffff' }}>Proof of Net Economic Contribution</strong>:
               token issuance is unlocked only when provable on-chain demand for PSRE is generated, and
               issuance is permanently constrained by an asymptotic scarcity function tied solely to
-              emitted supply. Prospereum is neutral infrastructure — applications define aligned economic
+              emitted supply. Prospereum is neutral infrastructure - applications define aligned economic
               activity, the protocol measures only net acquisition and time-locked participation.
             </p>
           </section>
@@ -110,7 +110,7 @@ export default function WhitepaperPage() {
                   </thead>
                   <tbody>
                     {[
-                      { cat: 'Behavioral Mining Emission Reserve', pct: '60%', amt: '12,600,000', note: 'Not minted at genesis — reserved for epoch-based emission' },
+                      { cat: 'Behavioral Mining Emission Reserve', pct: '60%', amt: '12,600,000', note: 'Not minted at genesis - reserved for epoch-based emission' },
                       { cat: 'Team & Founders', pct: '20%', amt: '4,200,000', note: '1-year cliff, 4-year linear vesting. No governance override.' },
                       { cat: 'Ecosystem Growth', pct: '8%', amt: '1,680,000', note: 'Minted at genesis to Treasury Wallet (SAFE)' },
                       { cat: 'DAO Treasury', pct: '7%', amt: '1,470,000', note: 'Liquidity stabilization, audit funding, infrastructure' },
@@ -141,8 +141,8 @@ export default function WhitepaperPage() {
                 color: 'rgba(255,255,255,0.60)',
               }}
             >
-              <strong style={{ color: '#D4AF37' }}>Launch Policy:</strong> No pre-sale · No private token sale ·
-              No ICO · No discounted insider allocation. Liquidity seeded solely from treasury allocation.
+              <strong style={{ color: '#D4AF37' }}>Launch Policy:</strong> No pre-sale - No private token sale -
+              No ICO - No discounted insider allocation. Liquidity seeded solely from treasury allocation.
               Behavioral mining begins only after the first full epoch.
             </div>
           </section>
@@ -158,7 +158,7 @@ export default function WhitepaperPage() {
 
             <div className="space-y-4" style={{ color: 'rgba(255,255,255,0.70)', lineHeight: '1.7' }}>
               <p>
-                Each partner participates by creating a <strong style={{ color: '#ffffff' }}>PartnerVault</strong> — a
+                Each partner participates by creating a <strong style={{ color: '#ffffff' }}>PartnerVault</strong> - a
                 dedicated on-chain contract used to acquire and distribute PSRE tokens. When a partner purchases
                 PSRE through its PartnerVault, the protocol records the <em>new net buy</em> generated during
                 that epoch.
@@ -187,10 +187,10 @@ export default function WhitepaperPage() {
                 className="font-mono text-lg text-center py-4"
                 style={{ color: '#D4AF37' }}
               >
-                E_scarcity(t) = E₀ · (1 − x(t))²
+                E_scarcity(t) = E0 - (1 - x(t))^2
               </div>
               <p className="text-xs text-center" style={{ color: 'rgba(255,255,255,0.40)' }}>
-                where x(t) = cumulative emitted / 12.6M reserve · E₀ = 0.1% of reserve per epoch initially · k = 2
+                where x(t) = cumulative emitted / 12.6M reserve - E0 = 0.1% of reserve per epoch initially - k = 2
               </p>
             </div>
 
@@ -208,7 +208,7 @@ export default function WhitepaperPage() {
                 color: '#D4AF37',
               }}
             >
-              B(t) = min(E_demand(t), E_scarcity(t), S_emission − T(t))
+              B(t) = min(E_demand(t), E_scarcity(t), S_emission - T(t))
             </div>
             <p className="text-xs mt-2" style={{ color: 'rgba(255,255,255,0.40)' }}>
               The actual emission for any epoch is the minimum of the demand limit, scarcity ceiling, and remaining reserve.
@@ -243,9 +243,9 @@ export default function WhitepaperPage() {
                   </thead>
                   <tbody>
                     {[
-                      { tier: '🥉 Bronze', threshold: 'sₚ < 0.5% of ecosystem', rate: '8%' },
-                      { tier: '🥈 Silver', threshold: '0.5% ≤ sₚ < 2.0%', rate: '10%' },
-                      { tier: '🥇 Gold', threshold: 'sₚ ≥ 2.0% of ecosystem', rate: '12%' },
+                      { tier: 'Bronze', threshold: 'sp < 0.5% of ecosystem', rate: '8%' },
+                      { tier: 'Silver', threshold: '0.5% <= sp < 2.0%', rate: '10%' },
+                      { tier: 'Gold', threshold: 'sp >= 2.0% of ecosystem', rate: '12%' },
                     ].map((row, i, arr) => (
                       <tr
                         key={row.tier}
@@ -279,8 +279,8 @@ export default function WhitepaperPage() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                { label: 'Base Reward Rate', value: '5% – 15% (default 10%)' },
-                { label: 'Epoch Duration', value: '3 – 14 days (default 7)' },
+                { label: 'Base Reward Rate', value: '5% - 15% (default 10%)' },
+                { label: 'Epoch Duration', value: '3 - 14 days (default 7)' },
                 { label: 'Scarcity Exponent k', value: 'DAO-adjustable within bounds' },
                 { label: 'Tier Thresholds', value: 'DAO-adjustable within bounds' },
               ].map((p) => (

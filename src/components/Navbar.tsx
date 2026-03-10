@@ -32,7 +32,7 @@ export default function Navbar() {
             className="flex items-center gap-2 font-bold text-xl transition-opacity hover:opacity-80"
             style={{ color: '#D4AF37' }}
           >
-            <span className="text-2xl">🐟</span>
+            <span className="text-2xl">PSRE</span>
             <span>PROSPEREUM</span>
           </Link>
 
@@ -54,7 +54,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Connect Wallet — secondary button style */}
+          {/* Connect Wallet - secondary button style */}
           <button
             className="hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200"
             style={{

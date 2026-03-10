@@ -4,7 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'Prospereum — Proof of Net Economic Contribution',
+  title: 'Prospereum - Proof of Net Economic Contribution',
   description:
     'Prospereum (PSRE) is a decentralized behavioral mining protocol on Base. Token issuance unlocked only when provable on-chain demand is generated.',
   keywords: ['Prospereum', 'PSRE', 'behavioral mining', 'Base', 'DeFi', 'token'],

@@ -5,22 +5,22 @@ import type { FormEvent } from 'react';
 
 const tiers = [
   {
-    name: '🥉 Bronze',
-    threshold: 'sₚ < 0.5% of ecosystem',
+    name: 'Bronze',
+    threshold: 'sp < 0.5% of ecosystem',
     rate: '8%',
     desc: 'Default tier for all new partners. Earn 8% of your net PSRE buy volume back as protocol rewards each epoch.',
     borderColor: '#CD7F32',
   },
   {
-    name: '🥈 Silver',
-    threshold: '0.5% ≤ sₚ < 2.0%',
+    name: 'Silver',
+    threshold: '0.5% <= sp < 2.0%',
     rate: '10%',
     desc: 'Earn 10% rewards. Achieved when your rolling contribution share reaches 0.5% of the ecosystem over 13 epochs.',
     borderColor: '#C0C0C0',
   },
   {
-    name: '🥇 Gold',
-    threshold: 'sₚ ≥ 2.0%',
+    name: 'Gold',
+    threshold: 'sp >= 2.0%',
     rate: '12%',
     desc: 'Maximum reward tier. Achieved when your rolling contribution share reaches 2% or more of total ecosystem activity.',
     borderColor: '#D4AF37',
@@ -68,7 +68,7 @@ export default function PartnersPage() {
           </h1>
           <p className="max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.50)', fontSize: '16px', lineHeight: '1.6' }}>
             Partners are the engine of the Prospereum protocol. By creating a PartnerVault and purchasing PSRE,
-            you generate provable on-chain demand — and earn protocol rewards for doing so.
+            you generate provable on-chain demand - and earn protocol rewards for doing so.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function PartnersPage() {
                 </span>
                 <div>
                   <strong style={{ color: '#ffffff' }}>{step.title}</strong>
-                  {' — '}
+                  {' - '}
                   <span style={{ color: 'rgba(255,255,255,0.60)' }}>{step.body}</span>
                 </div>
               </li>
@@ -200,7 +200,7 @@ export default function PartnersPage() {
               border: '1px solid rgba(245,180,50,0.15)',
             }}
           >
-            <span>⚠</span> Partner onboarding goes live with mainnet launch. No transactions will be initiated at this time.
+            <span>!</span> Partner onboarding goes live with mainnet launch. No transactions will be initiated at this time.
           </div>
         </div>
 
@@ -218,7 +218,7 @@ export default function PartnersPage() {
 
           {submitted ? (
             <div className="text-center py-10">
-              <div className="text-4xl mb-4">🐟</div>
+              <div className="text-4xl mb-4">PSRE</div>
               <h3
                 className="font-bold mb-2"
                 style={{ fontSize: '20px', color: '#D4AF37' }}
@@ -276,10 +276,10 @@ export default function PartnersPage() {
                   onChange={(e) => setForm({ ...form, volume: e.target.value })}
                   style={{ ...inputStyle }}
                 >
-                  <option value="" style={{ background: '#1a1a1c' }}>Select a range…</option>
+                  <option value="" style={{ background: '#1a1a1c' }}>Select a range...</option>
                   <option value="lt10k" style={{ background: '#1a1a1c' }}>&lt; $10,000/mo</option>
-                  <option value="10k-50k" style={{ background: '#1a1a1c' }}>$10,000 – $50,000/mo</option>
-                  <option value="50k-250k" style={{ background: '#1a1a1c' }}>$50,000 – $250,000/mo</option>
+                  <option value="10k-50k" style={{ background: '#1a1a1c' }}>$10,000 - $50,000/mo</option>
+                  <option value="50k-250k" style={{ background: '#1a1a1c' }}>$50,000 - $250,000/mo</option>
                   <option value="gt250k" style={{ background: '#1a1a1c' }}>&gt; $250,000/mo</option>
                 </select>
               </div>
@@ -292,7 +292,7 @@ export default function PartnersPage() {
                   color: '#D4AF37',
                 }}
               >
-                Submit Interest →
+                Submit Interest >
               </button>
             </form>
           )}

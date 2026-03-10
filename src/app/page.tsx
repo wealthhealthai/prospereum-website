@@ -11,7 +11,7 @@ const steps = [
   {
     step: '01',
     title: 'Partner Creates a PartnerVault',
-    desc: 'Any approved partner deploys a dedicated on-chain PartnerVault contract — their permanent identity in the protocol.',
+    desc: 'Any approved partner deploys a dedicated on-chain PartnerVault contract - their permanent identity in the protocol.',
   },
   {
     step: '02',
@@ -20,7 +20,7 @@ const steps = [
   },
   {
     step: '03',
-    title: 'Epoch Finalizes — Rewards Minted',
+    title: 'Epoch Finalizes - Rewards Minted',
     desc: "Every 7 days the protocol calculates the emission budget and mints PSRE rewards proportional to each partner's contribution.",
   },
   {
@@ -32,27 +32,27 @@ const steps = [
 
 const features = [
   {
-    icon: '📈',
+    icon: '',
     title: 'Demand-Bounded',
     description:
-      'Token issuance is capped at 10% of new net PSRE purchases per epoch. No demand, no mint. Rewards are a direct function of real on-chain economic activity — not a schedule.',
+      'Token issuance is capped at 10% of new net PSRE purchases per epoch. No demand, no mint. Rewards are a direct function of real on-chain economic activity - not a schedule.',
   },
   {
-    icon: '🔒',
+    icon: '',
     title: 'Scarcity-Controlled',
     description:
-      'An asymptotic scarcity function E(t) = E₀ · (1 − x)² progressively tightens emission as the reserve depletes. The weekly ceiling shrinks toward zero automatically.',
+      'An asymptotic scarcity function E(t) = E0 - (1 - x)^2 progressively tightens emission as the reserve depletes. The weekly ceiling shrinks toward zero automatically.',
   },
   {
-    icon: '⚖️',
+    icon: '',
     title: 'Governance-Limited',
     description:
-      'The DAO tunes parameters within fixed bounds (base rate 5–15%, epoch 3–14 days). Core supply cap and emission math are immutable. No admin mint authority exists — ever.',
+      'The DAO tunes parameters within fixed bounds (base rate 5-15%, epoch 3-14 days). Core supply cap and emission math are immutable. No admin mint authority exists - ever.',
   },
 ];
 
 const allocation = [
-  { cat: 'Behavioral Mining Reserve', pct: '60%', amt: '12,600,000', note: 'Not minted at genesis — demand-gated emission', width: 60 },
+  { cat: 'Behavioral Mining Reserve', pct: '60%', amt: '12,600,000', note: 'Not minted at genesis - demand-gated emission', width: 60 },
   { cat: 'Team & Founders', pct: '20%', amt: '4,200,000', note: '1-year cliff, 4-year linear vesting', width: 20 },
   { cat: 'Ecosystem Growth', pct: '8%', amt: '1,680,000', note: 'Minted to Treasury (SAFE) at genesis', width: 8 },
   { cat: 'DAO Treasury', pct: '7%', amt: '1,470,000', note: 'Liquidity, audits, infrastructure', width: 7 },
@@ -63,7 +63,7 @@ export default function HomePage() {
   return (
     <div style={{ color: '#F2EDE8' }}>
 
-      {/* ── HERO ── */}
+      {/* -- HERO -- */}
       <section
         className="relative min-h-[88vh] flex flex-col items-center justify-center text-center px-6 py-24 overflow-hidden"
       >
@@ -120,7 +120,7 @@ export default function HomePage() {
             className="mb-12 max-w-2xl mx-auto"
             style={{ fontSize: '16px', color: 'rgba(255,255,255,0.40)', lineHeight: '1.6' }}
           >
-            Prospereum (PSRE) rewards real economic participation — not inflation farming — and
+            Prospereum (PSRE) rewards real economic participation - not inflation farming - and
             enforces permanent scarcity through math, not governance.
           </p>
 
@@ -164,7 +164,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── STAT BAR ── */}
+      {/* -- STAT BAR -- */}
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((s) => (
@@ -186,7 +186,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── HOW IT WORKS ── */}
+      {/* -- HOW IT WORKS -- */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-4">
@@ -208,7 +208,7 @@ export default function HomePage() {
             style={{ color: 'rgba(255,255,255,0.50)', fontSize: '16px', lineHeight: '1.6' }}
           >
             Unlike proof-of-work or proof-of-stake, Prospereum issues tokens only when verifiable
-            economic demand is recorded on-chain — each epoch, every 7 days.
+            economic demand is recorded on-chain - each epoch, every 7 days.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -243,7 +243,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── WHY PROSPEREUM ── */}
+      {/* -- WHY PROSPEREUM -- */}
       <section className="py-24 px-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="max-w-6xl mx-auto">
           <h2
@@ -281,7 +281,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TOKEN DISTRIBUTION ── */}
+      {/* -- TOKEN DISTRIBUTION -- */}
       <section className="py-24 px-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="max-w-6xl mx-auto">
           <h2
@@ -294,7 +294,7 @@ export default function HomePage() {
             className="text-center max-w-xl mx-auto mb-12"
             style={{ color: 'rgba(255,255,255,0.50)', fontSize: '16px' }}
           >
-            Total supply is immutable at 21,000,000 PSRE. No pre-sale · No ICO · No private token sale.
+            Total supply is immutable at 21,000,000 PSRE. No pre-sale - No ICO - No private token sale.
           </p>
 
           <div
@@ -348,7 +348,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA SECTION ── */}
+      {/* -- CTA SECTION -- */}
       <section
         className="relative py-24 text-center overflow-hidden"
         style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
@@ -377,7 +377,7 @@ export default function HomePage() {
                 color: '#D4AF37',
               }}
             >
-              Become a Partner →
+              Become a Partner >
             </Link>
             <Link
               href="/stats"
@@ -394,17 +394,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
+      {/* -- FOOTER -- */}
       <footer style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             {/* Wordmark */}
             <div>
               <div className="font-bold text-xl mb-1" style={{ color: '#D4AF37', fontWeight: 700 }}>
-                🐟 PROSPEREUM
+                PSRE PROSPEREUM
               </div>
               <div style={{ color: 'rgba(255,255,255,0.40)', fontSize: '13px' }}>
-                Proof of Net Economic Contribution · Built on Base
+                Proof of Net Economic Contribution - Built on Base
               </div>
             </div>
             {/* Links */}
@@ -419,8 +419,8 @@ export default function HomePage() {
             className="mt-8 pt-6 flex flex-col md:flex-row gap-2 items-start md:items-center justify-between"
             style={{ borderTop: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.30)', fontSize: '13px' }}
           >
-            <span>© 2026 WealthHealth AI · Prospereum Protocol (PSRE)</span>
-            <span>No pre-sale · No ICO · No private token sale · Demand-bounded emission</span>
+            <span>(c) 2026 WealthHealth AI - Prospereum Protocol (PSRE)</span>
+            <span>No pre-sale - No ICO - No private token sale - Demand-bounded emission</span>
           </div>
         </div>
       </footer>

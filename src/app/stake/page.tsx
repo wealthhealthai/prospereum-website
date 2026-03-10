@@ -48,7 +48,7 @@ export default function StakePage() {
             Stake <span style={{ color: '#D4AF37' }}>PSRE</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.50)', fontSize: '16px', lineHeight: '1.6' }}>
-            Lock PSRE or LP tokens to earn your share of the 30% staker reward pool — distributed every 7-day epoch.
+            Lock PSRE or LP tokens to earn your share of the 30% staker reward pool - distributed every 7-day epoch.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export default function StakePage() {
             color: 'rgba(245,180,50,0.85)',
           }}
         >
-          <span className="text-lg shrink-0 mt-0.5">⚠</span>
+          <span className="text-lg shrink-0 mt-0.5">!</span>
           <div>
             <strong>Staking goes live on mainnet.</strong> This interface is a preview. No transactions will
             be initiated. Testnet staking is available via{' '}
@@ -75,7 +75,7 @@ export default function StakePage() {
             className="mb-8 p-6 text-center rounded-2xl"
             style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(212,175,55,0.20)' }}
           >
-            <div className="text-3xl mb-3">🔗</div>
+            <div className="text-3xl mb-3"></div>
             <h3 className="font-bold mb-2" style={{ fontSize: '18px', color: '#ffffff' }}>
               Connect Your Wallet
             </h3>
@@ -99,9 +99,9 @@ export default function StakePage() {
         {/* Balances */}
         <div className="grid grid-cols-3 gap-4 mb-8">
           {[
-            { label: 'Your PSRE Balance', value: '—' },
-            { label: 'Your Staked Amount', value: '—' },
-            { label: 'Pending Rewards', value: '—' },
+            { label: 'Your PSRE Balance', value: '-' },
+            { label: 'Your Staked Amount', value: '-' },
+            { label: 'Pending Rewards', value: '-' },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -114,7 +114,7 @@ export default function StakePage() {
           ))}
         </div>
 
-        {/* Tab selector: PSRE / LP — gold underline style */}
+        {/* Tab selector: PSRE / LP - gold underline style */}
         <div
           className="flex mb-6"
           style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}
@@ -221,7 +221,7 @@ export default function StakePage() {
             {[
               {
                 title: 'Time-Weighted Rewards',
-                desc: 'Rewards are proportional to amount × duration staked during the epoch. Stake longer, earn more.',
+                desc: 'Rewards are proportional to amount x duration staked during the epoch. Stake longer, earn more.',
               },
               {
                 title: '30% of Epoch Budget',
