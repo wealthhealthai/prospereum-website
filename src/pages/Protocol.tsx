@@ -67,13 +67,16 @@ function Hero() {
         />
       </div>
 
-      {/* Content overlay */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
+      {/* Content overlay — mix-blend-mode:difference auto-inverts text against the sphere */}
+      <div
+        className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6"
+        style={{ mixBlendMode: "difference" }}
+      >
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xs font-semibold tracking-[0.25em] uppercase text-[#D4AF37] mb-4"
+          className="text-xs font-semibold tracking-[0.25em] uppercase text-white mb-4"
         >
           The Protocol
         </motion.p>
@@ -81,7 +84,7 @@ function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="font-display text-5xl md:text-6xl xl:text-7xl font-bold text-[#F2EDE8] mb-6 leading-tight"
+          className="font-display text-5xl md:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
         >
           How Prospereum Works
         </motion.h1>
@@ -89,7 +92,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.5 }}
-          className="text-base md:text-lg text-[rgba(242,237,232,0.7)] max-w-xl leading-relaxed"
+          className="text-base md:text-lg text-white max-w-xl leading-relaxed"
         >
           Proof of real economic demand, recorded on-chain, rewarded in PSRE.
         </motion.p>
