@@ -1,0 +1,5 @@
+# Cloudflare Pages configuration for Prospereum website
+# Connect this repo at: https://dash.cloudflare.com/pages
+
+[pages]
+name = "prospereum"
