@@ -1,6 +1,8 @@
 import { useRef } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { FuturisticHero } from "./components/FuturisticHero";
+import { Protocol } from "./pages/Protocol";
 import logoSrc from "./assets/logo.png";
 import "./index.css";
 
@@ -42,26 +44,35 @@ function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 backdrop-blur-md bg-[#0C0C0E]/70 border-b border-[rgba(212,175,55,0.10)]">
       {/* Logo */}
-      <a href="/" className="flex items-center gap-2">
+      <Link to="/" className="flex items-center gap-2">
         <img src={logoSrc} alt="Prospereum" className="h-8 w-auto" />
-      </a>
+      </Link>
 
       {/* Center links */}
       <div className="hidden md:flex items-center gap-8">
-        {["How It Works", "Protocol", "Whitepaper"].map((label) => (
-          <a
-            key={label}
-            href={`#${label.toLowerCase().replace(/\s+/g, "-")}`}
-            className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors"
-          >
-            {label}
-          </a>
-        ))}
+        <Link
+          to="/#how-it-works"
+          className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors"
+        >
+          How It Works
+        </Link>
+        <Link
+          to="/protocol"
+          className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors"
+        >
+          Protocol
+        </Link>
+        <a
+          href="#"
+          className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors"
+        >
+          Whitepaper
+        </a>
       </div>
 
       {/* CTA */}
       <a
-        href="#whitepaper"
+        href="#"
         className="hidden md:inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold bg-[#D4AF37] text-[#0C0C0E] hover:bg-[#B8962E] transition-colors"
       >
         Read Whitepaper
@@ -136,7 +147,7 @@ const STATS = [
   { value: "Base", label: "Network" },
 ];
 
-function Protocol() {
+function ProtocolStats() {
   return (
     <Section id="protocol" className="bg-[#0C0C0E]">
       <div className="max-w-5xl mx-auto">
@@ -318,17 +329,29 @@ function Footer() {
   );
 }
 
-// ─── App ──────────────────────────────────────────────────────────────────────
-export default function App() {
+// ─── Home Page ────────────────────────────────────────────────────────────────
+function HomePage() {
   return (
     <div className="min-h-screen bg-[#0C0C0E] text-[#F2EDE8]">
-      <Nav />
       <FuturisticHero />
       <HowItWorks />
-      <Protocol />
+      <ProtocolStats />
       <Tiers />
       <CTA />
       <Footer />
     </div>
+  );
+}
+
+// ─── App ──────────────────────────────────────────────────────────────────────
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/protocol" element={<Protocol />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
