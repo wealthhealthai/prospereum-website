@@ -51,6 +51,9 @@ function Hero() {
       <div className="absolute inset-0">
         <LiquidMetal
           {...liquidMetalPresets[2].params}
+          worldWidth={900}
+          worldHeight={900}
+          scale={1}
           style={{ width: "100%", height: "100%" }}
         />
       </div>
