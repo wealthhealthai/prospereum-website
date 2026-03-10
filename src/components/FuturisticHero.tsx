@@ -188,7 +188,7 @@ export function FuturisticHero() {
 
       {/* Text overlay — centered */}
       <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none px-8">
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-3xl md:text-5xl xl:text-6xl 2xl:text-7xl font-display font-extrabold text-white uppercase">
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-2xl sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-display font-extrabold text-white uppercase">
           {TITLE_WORDS.map((word, i) => (
             <span
               key={i}
@@ -200,7 +200,7 @@ export function FuturisticHero() {
           ))}
         </div>
         <div
-          className={`mt-3 text-sm md:text-xl xl:text-2xl font-semibold text-white/80 tracking-widest uppercase transition-opacity duration-700 ${
+          className={`mt-2 text-xs sm:text-sm md:text-xl xl:text-2xl font-semibold text-white/80 tracking-widest uppercase transition-opacity duration-700 ${
             subtitleVisible ? "opacity-100" : "opacity-0"
           }`}
         >

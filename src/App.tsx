@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { FuturisticHero } from "./components/FuturisticHero";
@@ -41,43 +41,78 @@ function Section({ id, children, className = "" }: { id?: string; children: Reac
 
 // ─── Nav ─────────────────────────────────────────────────────────────────────
 function Nav() {
+  const [open, setOpen] = useState(false);
+  const navLinks = [
+    { label: "How It Works", to: "/#how-it-works", internal: true },
+    { label: "Protocol", to: "/protocol", internal: true },
+    { label: "Whitepaper", to: "#", internal: false },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 backdrop-blur-md bg-[#0C0C0E]/70 border-b border-[rgba(212,175,55,0.10)]">
-      {/* Logo */}
-      <Link to="/" className="flex items-center gap-2">
-        <img src={logoSrc} alt="Prospereum" className="h-8 w-auto" />
-      </Link>
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-5 py-4 backdrop-blur-md bg-[#0C0C0E]/80 border-b border-[rgba(212,175,55,0.10)]">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+          <img src={logoSrc} alt="Prospereum" className="h-7 w-auto" />
+        </Link>
 
-      {/* Center links */}
-      <div className="hidden md:flex items-center gap-8">
-        <Link
-          to="/#how-it-works"
-          className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors"
-        >
-          How It Works
-        </Link>
-        <Link
-          to="/protocol"
-          className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors"
-        >
-          Protocol
-        </Link>
-        <a
-          href="#"
-          className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors"
-        >
-          Whitepaper
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((l) =>
+            l.internal ? (
+              <Link key={l.label} to={l.to} className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors">
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.label} href={l.to} className="text-sm font-medium text-[rgba(242,237,232,0.65)] hover:text-[#F2EDE8] transition-colors">
+                {l.label}
+              </a>
+            )
+          )}
+        </div>
+
+        {/* Desktop CTA */}
+        <a href="#" className="hidden md:inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold bg-[#D4AF37] text-[#0C0C0E] hover:bg-[#B8962E] transition-colors">
+          Read Whitepaper
         </a>
-      </div>
 
-      {/* CTA */}
-      <a
-        href="#"
-        className="hidden md:inline-flex items-center px-5 py-2 rounded-full text-sm font-semibold bg-[#D4AF37] text-[#0C0C0E] hover:bg-[#B8962E] transition-colors"
-      >
-        Read Whitepaper
-      </a>
-    </nav>
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8 cursor-pointer"
+          onClick={() => setOpen(!open)}
+          aria-label="Menu"
+        >
+          <span className={`block h-[2px] bg-[#F2EDE8] transition-all duration-300 ${open ? "rotate-45 translate-y-[7px]" : ""}`} />
+          <span className={`block h-[2px] bg-[#F2EDE8] transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+          <span className={`block h-[2px] bg-[#F2EDE8] transition-all duration-300 ${open ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+        </button>
+      </nav>
+
+      {/* Mobile drawer */}
+      {open && (
+        <div className="fixed inset-0 z-[99] md:hidden" onClick={() => setOpen(false)}>
+          <div
+            className="absolute top-[61px] left-0 right-0 bg-[#0C0C0E]/95 backdrop-blur-xl border-b border-[rgba(212,175,55,0.12)] px-6 py-6 flex flex-col gap-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {navLinks.map((l) =>
+              l.internal ? (
+                <Link key={l.label} to={l.to} className="text-base font-medium text-[#F2EDE8]" onClick={() => setOpen(false)}>
+                  {l.label}
+                </Link>
+              ) : (
+                <a key={l.label} href={l.to} className="text-base font-medium text-[#F2EDE8]" onClick={() => setOpen(false)}>
+                  {l.label}
+                </a>
+              )
+            )}
+            <a href="#" className="mt-2 inline-flex justify-center items-center px-6 py-3 rounded-full font-semibold bg-[#D4AF37] text-[#0C0C0E] text-sm">
+              Read Whitepaper
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -124,7 +159,7 @@ function HowItWorks() {
             <motion.div
               key={step.num}
               variants={fadeUp}
-              className="bg-[#0C0C0E] p-8 flex flex-col gap-4 hover:bg-[#131316] transition-colors"
+              className="bg-[#0C0C0E] p-5 md:p-8 flex flex-col gap-3 hover:bg-[#131316] transition-colors"
             >
               <span className="font-display text-5xl font-extrabold text-[#D4AF37] opacity-40">
                 {step.num}

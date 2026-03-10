@@ -50,8 +50,8 @@ function Hero() {
       {/* Sphere — liquid metal clipped to a circle by shape:"circle" in the shader */}
       <div
         style={{
-          width: "min(78vh, 78vw)",
-          height: "min(78vh, 78vw)",
+          width: "min(92vw, 78vh)",
+          height: "min(92vw, 78vh)",
           position: "relative",
           flexShrink: 0,
         }}
@@ -84,7 +84,7 @@ function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="font-display text-5xl md:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
+          className="font-display text-3xl sm:text-4xl md:text-6xl xl:text-7xl font-bold text-white mb-4 leading-tight"
         >
           How Prospereum Works
         </motion.h1>
