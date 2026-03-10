@@ -7,27 +7,51 @@ export const metadata: Metadata = {
 
 export default function StatsPage() {
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen" style={{ background: '#0C0C0E', color: '#F2EDE8' }}>
+
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex items-center justify-between mb-2">
-          <h1 className="text-3xl md:text-4xl font-bold">
-            Protocol <span className="text-[#D4AF37]">Stats</span>
+          <h1
+            className="font-extrabold"
+            style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-1.5px', color: '#ffffff' }}
+          >
+            Protocol <span style={{ color: '#D4AF37' }}>Stats</span>
           </h1>
-          <div className="flex items-center gap-2 text-xs text-green-400 bg-green-400/10 border border-green-400/20 rounded-full px-3 py-1">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <div
+            className="flex items-center gap-2 text-xs rounded-full px-3 py-1"
+            style={{
+              color: '#3ECF8E',
+              background: 'rgba(62,207,142,0.10)',
+              border: '1px solid rgba(62,207,142,0.20)',
+            }}
+          >
+            <span
+              className="w-2 h-2 rounded-full animate-pulse"
+              style={{ background: '#3ECF8E' }}
+            />
             Base Sepolia Testnet
           </div>
         </div>
-        <p className="text-gray-500 text-sm">Live data from the Prospereum protocol deployment on Base Sepolia testnet.</p>
+        <p style={{ color: 'rgba(255,255,255,0.40)', fontSize: '14px' }}>
+          Live data from the Prospereum protocol deployment on Base Sepolia testnet.
+        </p>
       </div>
 
-      {/* Dashboard iframe */}
-      <div className="w-full border-y border-[#D4AF37]/10">
+      {/* Dashboard iframe — dark container */}
+      <div
+        className="w-full"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+      >
         <iframe
           src="https://wealthhealthai.github.io/prospereum-protocol/"
           className="w-full"
-          style={{ height: 'calc(100vh - 220px)', minHeight: '600px' }}
+          style={{
+            height: 'calc(100vh - 220px)',
+            minHeight: '600px',
+            background: '#0C0C0E',
+            display: 'block',
+          }}
           title="Prospereum Protocol Dashboard"
           frameBorder="0"
           allowFullScreen
@@ -35,21 +59,21 @@ export default function StatsPage() {
       </div>
 
       {/* Footer note */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
           <div>
-            <p className="text-gray-500 text-sm">
+            <p style={{ color: 'rgba(255,255,255,0.40)', fontSize: '14px' }}>
               📡 Live data from{' '}
               <a
                 href="https://wealthhealthai.github.io/prospereum-protocol/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#D4AF37] hover:underline"
+                style={{ color: '#D4AF37' }}
               >
                 wealthhealthai.github.io/prospereum-protocol
               </a>
             </p>
-            <p className="text-gray-600 text-xs mt-1">
+            <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '13px', marginTop: '4px' }}>
               Testnet data only. Mainnet launch TBD. Contract addresses visible in the dashboard.
             </p>
           </div>
@@ -58,14 +82,19 @@ export default function StatsPage() {
               href="https://wealthhealthai.github.io/prospereum-protocol/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-[#D4AF37]/30 text-[#D4AF37] text-sm rounded hover:bg-[#D4AF37]/10 transition-colors"
+              className="px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200"
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.10)',
+                color: '#F2EDE8',
+              }}
             >
               Open in New Tab ↗
             </a>
           </div>
         </div>
 
-        {/* Stat cards placeholder */}
+        {/* Stat cards */}
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { label: 'Current Epoch', value: 'Live ↗' },
@@ -75,17 +104,23 @@ export default function StatsPage() {
           ].map((s) => (
             <div
               key={s.label}
-              className="bg-[#0d0d0d] border border-white/10 rounded-xl p-5 text-center opacity-60"
+              className="p-5 text-center rounded-2xl"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                opacity: 0.65,
+              }}
             >
-              <div className="text-lg font-bold text-[#D4AF37]">{s.value}</div>
-              <div className="text-xs text-gray-500 mt-1">{s.label}</div>
+              <div className="text-lg font-bold" style={{ color: '#D4AF37' }}>{s.value}</div>
+              <div className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.40)' }}>{s.label}</div>
             </div>
           ))}
         </div>
-        <p className="text-xs text-gray-700 text-center mt-3">
+        <p className="text-xs text-center mt-3" style={{ color: 'rgba(255,255,255,0.20)' }}>
           Aggregated stats shown in dashboard above. Mainnet stat cards will populate on launch.
         </p>
       </div>
+
     </div>
   );
 }

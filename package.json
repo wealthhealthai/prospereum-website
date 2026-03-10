@@ -13,6 +13,7 @@
     "@tanstack/react-query": "^5.90.21",
     "connectkit": "^1.9.1",
     "framer-motion": "^12.35.2",
+    "geist": "^1.7.0",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
     "react": "19.2.3",

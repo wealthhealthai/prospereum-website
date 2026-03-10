@@ -5,6 +5,24 @@ import { useState } from 'react';
 type Tab = 'psre' | 'lp';
 type Action = 'stake' | 'unstake';
 
+const cardStyle = {
+  background: 'rgba(255,255,255,0.04)',
+  border: '1px solid rgba(255,255,255,0.08)',
+  borderRadius: '16px',
+};
+
+const inputStyle = {
+  flex: 1,
+  background: 'rgba(255,255,255,0.04)',
+  border: '1px solid rgba(255,255,255,0.10)',
+  borderRadius: '12px',
+  padding: '12px 16px',
+  color: '#F2EDE8',
+  fontSize: '15px',
+  outline: 'none',
+  fontFamily: 'monospace',
+};
+
 export default function StakePage() {
   const [tab, setTab] = useState<Tab>('psre');
   const [action, setAction] = useState<Action>('stake');
@@ -12,94 +30,139 @@ export default function StakePage() {
   const [walletConnected] = useState(false);
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 text-white">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Stake <span className="text-[#D4AF37]">PSRE</span>
-        </h1>
-        <p className="text-gray-400">
-          Lock PSRE or LP tokens to earn your share of the 30% staker reward pool — distributed every 7-day epoch.
-        </p>
-      </div>
+    <div className="min-h-screen" style={{ background: '#0C0C0E', color: '#F2EDE8' }}>
+      <div className="max-w-3xl mx-auto px-6 py-16">
 
-      {/* Mainnet notice */}
-      <div className="mb-8 flex items-center gap-3 bg-amber-500/5 border border-amber-500/20 rounded-xl px-5 py-4 text-amber-400 text-sm">
-        <span className="text-xl">⚠</span>
-        <div>
-          <strong>Staking goes live on mainnet.</strong> This interface is a preview. No transactions will
-          be initiated. Testnet staking is available via{' '}
-          <a href="/stats" className="underline hover:text-amber-300">the Stats dashboard</a>.
-        </div>
-      </div>
-
-      {/* Connect wallet prompt */}
-      {!walletConnected && (
-        <div className="mb-8 bg-[#0d0d0d] border border-[#D4AF37]/30 rounded-xl p-6 text-center">
-          <div className="text-3xl mb-3">🔗</div>
-          <h3 className="text-lg font-bold mb-2">Connect Your Wallet</h3>
-          <p className="text-gray-400 text-sm mb-4">Connect to view your balances and stake PSRE or LP tokens.</p>
-          <button
-            className="px-6 py-3 border border-[#D4AF37] text-[#D4AF37] font-bold rounded hover:bg-[#D4AF37]/10 transition-colors"
-            onClick={() => alert('Wallet connection goes live with mainnet launch.')}
+        {/* Header */}
+        <div className="text-center mb-12">
+          <span
+            className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
+            style={{ background: 'rgba(212,175,55,0.12)', color: '#D4AF37' }}
           >
-            Connect Wallet
-          </button>
+            Staking
+          </span>
+          <h1
+            className="font-extrabold mb-4"
+            style={{ fontSize: 'clamp(36px, 5vw, 52px)', fontWeight: 800, letterSpacing: '-1.5px', color: '#ffffff' }}
+          >
+            Stake <span style={{ color: '#D4AF37' }}>PSRE</span>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.50)', fontSize: '16px', lineHeight: '1.6' }}>
+            Lock PSRE or LP tokens to earn your share of the 30% staker reward pool — distributed every 7-day epoch.
+          </p>
         </div>
-      )}
 
-      {/* Balances */}
-      <div className="grid grid-cols-3 gap-4 mb-8">
-        {[
-          { label: 'Your PSRE Balance', value: walletConnected ? '—' : '—' },
-          { label: 'Your Staked Amount', value: walletConnected ? '—' : '—' },
-          { label: 'Pending Rewards', value: walletConnected ? '—' : '—' },
-        ].map((stat) => (
-          <div key={stat.label} className="bg-[#0d0d0d] border border-white/10 rounded-xl p-4 text-center">
-            <div className="text-xl font-bold text-[#D4AF37]">{stat.value}</div>
-            <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
+        {/* Mainnet notice */}
+        <div
+          className="mb-8 flex items-start gap-3 px-5 py-4 rounded-xl text-sm"
+          style={{
+            background: 'rgba(245,180,50,0.05)',
+            border: '1px solid rgba(245,180,50,0.15)',
+            color: 'rgba(245,180,50,0.85)',
+          }}
+        >
+          <span className="text-lg shrink-0 mt-0.5">⚠</span>
+          <div>
+            <strong>Staking goes live on mainnet.</strong> This interface is a preview. No transactions will
+            be initiated. Testnet staking is available via{' '}
+            <a href="/stats" style={{ color: '#D4AF37', textDecoration: 'underline' }}>the Stats dashboard</a>.
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Tab selector: PSRE vs LP */}
-      <div className="flex rounded-xl overflow-hidden border border-[#D4AF37]/20 mb-6">
-        {(['psre', 'lp'] as Tab[]).map((t) => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            className={`flex-1 py-3 text-sm font-bold transition-colors ${
-              tab === t
-                ? 'bg-[#D4AF37] text-black'
-                : 'bg-[#0d0d0d] text-gray-400 hover:text-white'
-            }`}
+        {/* Connect wallet prompt */}
+        {!walletConnected && (
+          <div
+            className="mb-8 p-6 text-center rounded-2xl"
+            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(212,175,55,0.20)' }}
           >
-            {t === 'psre' ? 'Stake PSRE' : 'Stake LP Tokens'}
-          </button>
-        ))}
-      </div>
-
-      {/* Stake/Unstake form */}
-      <div className="bg-[#0d0d0d] border border-[#D4AF37]/20 rounded-xl p-8">
-        {/* Action toggle */}
-        <div className="flex gap-4 mb-6">
-          {(['stake', 'unstake'] as Action[]).map((a) => (
+            <div className="text-3xl mb-3">🔗</div>
+            <h3 className="font-bold mb-2" style={{ fontSize: '18px', color: '#ffffff' }}>
+              Connect Your Wallet
+            </h3>
+            <p className="text-sm mb-4" style={{ color: 'rgba(255,255,255,0.50)' }}>
+              Connect to view your balances and stake PSRE or LP tokens.
+            </p>
             <button
-              key={a}
-              onClick={() => setAction(a)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
-                action === a
-                  ? 'bg-[#D4AF37] text-black'
-                  : 'border border-white/20 text-gray-400 hover:text-white'
-              }`}
+              className="px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200"
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.10)',
+                color: '#ffffff',
+              }}
+              onClick={() => alert('Wallet connection goes live with mainnet launch.')}
             >
-              {a.charAt(0).toUpperCase() + a.slice(1)}
+              Connect Wallet
+            </button>
+          </div>
+        )}
+
+        {/* Balances */}
+        <div className="grid grid-cols-3 gap-4 mb-8">
+          {[
+            { label: 'Your PSRE Balance', value: '—' },
+            { label: 'Your Staked Amount', value: '—' },
+            { label: 'Pending Rewards', value: '—' },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="p-4 text-center rounded-2xl"
+              style={cardStyle}
+            >
+              <div className="text-xl font-bold" style={{ color: '#D4AF37' }}>{stat.value}</div>
+              <div className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.40)' }}>{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tab selector: PSRE / LP — gold underline style */}
+        <div
+          className="flex mb-6"
+          style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+        >
+          {(['psre', 'lp'] as Tab[]).map((t) => (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className="px-6 py-3 text-sm font-semibold transition-all duration-200"
+              style={{
+                color: tab === t ? '#D4AF37' : 'rgba(255,255,255,0.50)',
+                borderBottom: tab === t ? '2px solid #D4AF37' : '2px solid transparent',
+                background: 'transparent',
+                marginBottom: '-1px',
+              }}
+            >
+              {t === 'psre' ? 'Stake PSRE' : 'Stake LP Tokens'}
             </button>
           ))}
         </div>
 
-        <div className="mb-2">
-          <label className="text-sm text-gray-400 font-semibold block mb-2">
+        {/* Stake / Unstake form */}
+        <div
+          className="p-8 rounded-2xl mb-10"
+          style={cardStyle}
+        >
+          {/* Action toggle */}
+          <div className="flex gap-3 mb-6">
+            {(['stake', 'unstake'] as Action[]).map((a) => (
+              <button
+                key={a}
+                onClick={() => setAction(a)}
+                className="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200"
+                style={
+                  action === a
+                    ? { background: 'rgba(212,175,55,0.12)', border: '1px solid rgba(212,175,55,0.55)', color: '#D4AF37' }
+                    : { background: 'transparent', border: '1px solid rgba(255,255,255,0.10)', color: 'rgba(255,255,255,0.50)' }
+                }
+              >
+                {a.charAt(0).toUpperCase() + a.slice(1)}
+              </button>
+            ))}
+          </div>
+
+          <label
+            className="text-sm font-semibold block mb-2"
+            style={{ color: 'rgba(255,255,255,0.60)' }}
+          >
             Amount to {action} ({tab === 'psre' ? 'PSRE' : 'LP Tokens'})
           </label>
           <div className="flex gap-3">
@@ -109,58 +172,78 @@ export default function StakePage() {
               placeholder="0.00"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="flex-1 bg-black border border-white/10 rounded px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37]/50 transition-colors font-mono"
+              style={inputStyle}
             />
             <button
-              className="px-4 py-3 border border-[#D4AF37]/30 text-[#D4AF37] text-sm rounded hover:bg-[#D4AF37]/10 transition-colors"
+              className="px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
+              style={{
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.10)',
+                color: 'rgba(255,255,255,0.70)',
+              }}
               onClick={() => setAmount('0')}
             >
               MAX
             </button>
           </div>
+
+          <button
+            className="w-full mt-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200"
+            disabled={!walletConnected}
+            style={
+              !walletConnected
+                ? { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.25)', cursor: 'not-allowed' }
+                : { background: 'rgba(212,175,55,0.12)', border: '1px solid rgba(212,175,55,0.55)', color: '#D4AF37', cursor: 'pointer' }
+            }
+            onClick={() => alert('Connect wallet and wait for mainnet launch to stake.')}
+          >
+            {action === 'stake'
+              ? `Stake ${tab === 'psre' ? 'PSRE' : 'LP Tokens'}`
+              : `Unstake ${tab === 'psre' ? 'PSRE' : 'LP Tokens'}`}
+          </button>
+
+          {!walletConnected && (
+            <p className="text-xs text-center mt-3" style={{ color: 'rgba(255,255,255,0.30)' }}>
+              Connect wallet to enable staking
+            </p>
+          )}
         </div>
 
-        <button
-          className="w-full mt-6 py-3 bg-[#D4AF37] text-black font-bold rounded hover:bg-[#b8962e] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-          disabled={!walletConnected}
-          onClick={() => alert('Connect wallet and wait for mainnet launch to stake.')}
-        >
-          {action === 'stake' ? `Stake ${tab === 'psre' ? 'PSRE' : 'LP Tokens'}` : `Unstake ${tab === 'psre' ? 'PSRE' : 'LP Tokens'}`}
-        </button>
-
-        {!walletConnected && (
-          <p className="text-xs text-gray-600 text-center mt-3">Connect wallet to enable staking</p>
-        )}
-      </div>
-
-      {/* Staking mechanics explainer */}
-      <div className="mt-10 space-y-4">
-        <h2 className="text-xl font-bold text-[#D4AF37]">How Staking Rewards Work</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            {
-              title: 'Time-Weighted Rewards',
-              desc: 'Rewards are proportional to amount × duration staked during the epoch. Stake longer, earn more.',
-            },
-            {
-              title: '30% of Epoch Budget',
-              desc: "Stakers share 30% of every epoch's total emission budget. The other 70% goes to partner vaults.",
-            },
-            {
-              title: 'PSRE or LP Tokens',
-              desc: 'Both PSRE tokens and PSRE/ETH LP tokens from the trading pool are eligible for the same staking pool.',
-            },
-            {
-              title: 'Claim After Epoch',
-              desc: 'Rewards are calculated at epoch close (every 7 days) and claimable from the staking contract immediately after.',
-            },
-          ].map((item) => (
-            <div key={item.title} className="bg-[#0d0d0d] border border-white/10 rounded-xl p-5">
-              <h3 className="font-bold text-white mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-400">{item.desc}</p>
-            </div>
-          ))}
+        {/* Staking mechanics */}
+        <div>
+          <h2
+            className="font-bold mb-5"
+            style={{ fontSize: '20px', fontWeight: 700, color: '#D4AF37' }}
+          >
+            How Staking Rewards Work
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                title: 'Time-Weighted Rewards',
+                desc: 'Rewards are proportional to amount × duration staked during the epoch. Stake longer, earn more.',
+              },
+              {
+                title: '30% of Epoch Budget',
+                desc: "Stakers share 30% of every epoch's total emission budget. The other 70% goes to partner vaults.",
+              },
+              {
+                title: 'PSRE or LP Tokens',
+                desc: 'Both PSRE tokens and PSRE/ETH LP tokens from the trading pool are eligible for the same staking pool.',
+              },
+              {
+                title: 'Claim After Epoch',
+                desc: 'Rewards are calculated at epoch close (every 7 days) and claimable from the staking contract immediately after.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="p-5 rounded-2xl" style={cardStyle}>
+                <h3 className="font-bold mb-2" style={{ fontSize: '15px', color: '#ffffff' }}>{item.title}</h3>
+                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.50)', lineHeight: '1.6' }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
       </div>
     </div>
   );

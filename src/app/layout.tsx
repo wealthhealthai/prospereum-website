@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import Navbar from '@/components/Navbar';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Prospereum — Proof of Net Economic Contribution',
@@ -18,14 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-black text-white min-h-screen`}>
+    <html lang="en" className={`dark ${GeistSans.variable}`}>
+      <body className="bg-[#0C0C0E] text-[#F2EDE8] min-h-screen antialiased">
         <Navbar />
         <main>{children}</main>
-        <footer className="border-t border-[#D4AF37]/20 mt-24 py-8 text-center text-gray-500 text-sm">
-          <p>© 2026 WealthHealth AI · Prospereum Protocol (PSRE) · Built on Base</p>
-          <p className="mt-1 text-xs">No pre-sale · No ICO · No private token sale · Demand-bounded emission</p>
-        </footer>
       </body>
     </html>
   );

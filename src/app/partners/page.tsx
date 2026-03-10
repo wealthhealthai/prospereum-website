@@ -9,20 +9,34 @@ const tiers = [
     threshold: 'sₚ < 0.5% of ecosystem',
     rate: '8%',
     desc: 'Default tier for all new partners. Earn 8% of your net PSRE buy volume back as protocol rewards each epoch.',
+    borderColor: '#CD7F32',
   },
   {
     name: '🥈 Silver',
     threshold: '0.5% ≤ sₚ < 2.0%',
     rate: '10%',
     desc: 'Earn 10% rewards. Achieved when your rolling contribution share reaches 0.5% of the ecosystem over 13 epochs.',
+    borderColor: '#C0C0C0',
   },
   {
     name: '🥇 Gold',
     threshold: 'sₚ ≥ 2.0%',
     rate: '12%',
     desc: 'Maximum reward tier. Achieved when your rolling contribution share reaches 2% or more of total ecosystem activity.',
+    borderColor: '#D4AF37',
   },
 ];
+
+const inputStyle = {
+  width: '100%',
+  background: 'rgba(255,255,255,0.04)',
+  border: '1px solid rgba(255,255,255,0.10)',
+  borderRadius: '12px',
+  padding: '12px 16px',
+  color: '#F2EDE8',
+  fontSize: '15px',
+  outline: 'none',
+};
 
 export default function PartnersPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -34,153 +48,256 @@ export default function PartnersPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-16 text-white">
-      {/* Header */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Become a <span className="text-[#D4AF37]">Prospereum Partner</span>
-        </h1>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Partners are the engine of the Prospereum protocol. By creating a PartnerVault and purchasing PSRE,
-          you generate provable on-chain demand — and earn protocol rewards for doing so.
-        </p>
-      </div>
+    <div className="min-h-screen" style={{ background: '#0C0C0E', color: '#F2EDE8' }}>
+      <div className="max-w-6xl mx-auto px-6 py-16">
 
-      {/* How it works */}
-      <div className="bg-[#0d0d0d] border border-[#D4AF37]/20 rounded-xl p-8 mb-12">
-        <h2 className="text-xl font-bold text-[#D4AF37] mb-6">How Partner Vaults Work</h2>
-        <ol className="space-y-4 text-gray-300">
-          <li className="flex gap-4">
-            <span className="text-[#D4AF37] font-bold text-lg min-w-[2rem]">1.</span>
-            <div>
-              <strong className="text-white">Deploy a PartnerVault</strong> — your dedicated on-chain contract. This is your permanent identity in the protocol, linked to your organization.
-            </div>
-          </li>
-          <li className="flex gap-4">
-            <span className="text-[#D4AF37] font-bold text-lg min-w-[2rem]">2.</span>
-            <div>
-              <strong className="text-white">Buy PSRE through your vault</strong> — your purchases are recorded as <em>new net buy</em> for the current epoch. PSRE can be used to reward your customers, referral partners, or distributed to program participants.
-            </div>
-          </li>
-          <li className="flex gap-4">
-            <span className="text-[#D4AF37] font-bold text-lg min-w-[2rem]">3.</span>
-            <div>
-              <strong className="text-white">Earn rewards every 7 days</strong> — at epoch close, the protocol mints PSRE rewards proportional to your net buy, capped by the demand-bounded scarcity model, and sends them to your PartnerVault.
-            </div>
-          </li>
-          <li className="flex gap-4">
-            <span className="text-[#D4AF37] font-bold text-lg min-w-[2rem]">4.</span>
-            <div>
-              <strong className="text-white">Tier up over time</strong> — your contribution share is tracked via a 13-epoch (quarterly) rolling average. As you grow, your tier improves and your reward rate increases.
-            </div>
-          </li>
-        </ol>
-      </div>
-
-      {/* Tier table */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">Partner <span className="text-[#D4AF37]">Reward Tiers</span></h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {tiers.map((tier) => (
-            <div
-              key={tier.name}
-              className="bg-[#0d0d0d] border border-[#D4AF37]/20 rounded-xl p-6 hover:border-[#D4AF37]/50 transition-all"
-            >
-              <div className="text-2xl font-bold mb-1">{tier.name}</div>
-              <div className="text-4xl font-black text-[#D4AF37] mb-2">{tier.rate}</div>
-              <div className="text-xs text-gray-500 font-mono mb-4">{tier.threshold}</div>
-              <p className="text-sm text-gray-400">{tier.desc}</p>
-            </div>
-          ))}
+        {/* Hero */}
+        <div className="text-center mb-16">
+          <span
+            className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
+            style={{ background: 'rgba(212,175,55,0.12)', color: '#D4AF37' }}
+          >
+            Partner Program
+          </span>
+          <h1
+            className="font-extrabold mb-4"
+            style={{ fontSize: 'clamp(36px, 5vw, 56px)', fontWeight: 800, letterSpacing: '-1.5px', color: '#ffffff' }}
+          >
+            Become a{' '}
+            <span style={{ color: '#D4AF37' }}>Prospereum Partner</span>
+          </h1>
+          <p className="max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.50)', fontSize: '16px', lineHeight: '1.6' }}>
+            Partners are the engine of the Prospereum protocol. By creating a PartnerVault and purchasing PSRE,
+            you generate provable on-chain demand — and earn protocol rewards for doing so.
+          </p>
         </div>
-        <p className="text-xs text-gray-600 mt-4">
-          Reward rates are applied to new net buy per epoch. If total demand exceeds the epoch budget, all rates
-          are proportionally scaled. No partner receives more than the budget allows.
-        </p>
-      </div>
 
-      {/* Connect wallet area */}
-      <div className="bg-[#0d0d0d] border border-[#D4AF37]/20 rounded-xl p-8 mb-12">
-        <h2 className="text-xl font-bold mb-2">Connect Wallet to Deploy PartnerVault</h2>
-        <p className="text-gray-400 text-sm mb-6">
-          PartnerVault deployment goes live with mainnet launch on Base. Connect your wallet to express interest
-          and be notified when onboarding opens.
-        </p>
-        <button
-          className="px-6 py-3 border border-[#D4AF37] text-[#D4AF37] font-bold rounded hover:bg-[#D4AF37]/10 transition-colors"
-          onClick={() => alert('Wallet connection and PartnerVault deployment goes live with mainnet launch.')}
+        {/* How it works card */}
+        <div
+          className="rounded-2xl p-8 mb-12"
+          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
         >
-          Connect Wallet
-        </button>
-        <div className="mt-4 inline-flex items-center gap-2 text-xs text-amber-500/80 bg-amber-500/5 border border-amber-500/20 rounded px-3 py-2">
-          <span>⚠</span> Partner onboarding goes live with mainnet launch. No transactions will be initiated at this time.
+          <h2
+            className="font-bold mb-6"
+            style={{ fontSize: '20px', fontWeight: 700, color: '#D4AF37' }}
+          >
+            How Partner Vaults Work
+          </h2>
+          <ol className="space-y-5">
+            {[
+              {
+                n: '1',
+                title: 'Deploy a PartnerVault',
+                body: 'Your dedicated on-chain contract. This is your permanent identity in the protocol, linked to your organization.',
+              },
+              {
+                n: '2',
+                title: 'Buy PSRE through your vault',
+                body: 'Your purchases are recorded as new net buy for the current epoch. PSRE can reward your customers, referral partners, or program participants.',
+              },
+              {
+                n: '3',
+                title: 'Earn rewards every 7 days',
+                body: 'At epoch close, the protocol mints PSRE rewards proportional to your net buy, capped by the demand-bounded scarcity model.',
+              },
+              {
+                n: '4',
+                title: 'Tier up over time',
+                body: 'Your contribution share is tracked via a 13-epoch rolling average. As you grow, your tier improves and your reward rate increases.',
+              },
+            ].map((step) => (
+              <li key={step.n} className="flex gap-4">
+                <span
+                  className="font-bold text-lg min-w-[2rem] shrink-0"
+                  style={{ color: '#D4AF37' }}
+                >
+                  {step.n}.
+                </span>
+                <div>
+                  <strong style={{ color: '#ffffff' }}>{step.title}</strong>
+                  {' — '}
+                  <span style={{ color: 'rgba(255,255,255,0.60)' }}>{step.body}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
-      </div>
 
-      {/* Interest form */}
-      <div className="bg-[#0d0d0d] border border-[#D4AF37]/20 rounded-xl p-8">
-        <h2 className="text-xl font-bold mb-2">Express Partner Interest</h2>
-        <p className="text-gray-400 text-sm mb-6">
-          Register your interest now and get early access to partner onboarding when mainnet launches.
-        </p>
-
-        {submitted ? (
-          <div className="text-center py-8">
-            <div className="text-4xl mb-4">🐟</div>
-            <h3 className="text-xl font-bold text-[#D4AF37] mb-2">Interest Registered</h3>
-            <p className="text-gray-400 text-sm">
-              We&apos;ll be in touch when partner onboarding goes live. Welcome to the Prospereum ecosystem.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">Company Name</label>
-              <input
-                type="text"
-                required
-                value={form.company}
-                onChange={(e) => setForm({ ...form, company: e.target.value })}
-                placeholder="Acme Corp"
-                className="w-full bg-black border border-white/10 rounded px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37]/50 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">Contact Email</label>
-              <input
-                type="email"
-                required
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="partnerships@yourcompany.com"
-                className="w-full bg-black border border-white/10 rounded px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37]/50 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">
-                Expected Monthly PSRE Buy Volume (USD equivalent)
-              </label>
-              <select
-                required
-                value={form.volume}
-                onChange={(e) => setForm({ ...form, volume: e.target.value })}
-                className="w-full bg-black border border-white/10 rounded px-4 py-3 text-white focus:outline-none focus:border-[#D4AF37]/50 transition-colors"
+        {/* Tier cards */}
+        <div className="mb-12">
+          <h2
+            className="font-extrabold mb-6"
+            style={{ fontSize: '28px', fontWeight: 800, letterSpacing: '-0.5px', color: '#ffffff' }}
+          >
+            Partner <span style={{ color: '#D4AF37' }}>Reward Tiers</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {tiers.map((tier) => (
+              <div
+                key={tier.name}
+                className="rounded-2xl p-6 transition-all duration-200"
+                style={{
+                  background: 'rgba(255,255,255,0.04)',
+                  border: `1px solid ${tier.borderColor}40`,
+                  backdropFilter: 'blur(8px)',
+                }}
               >
-                <option value="">Select a range…</option>
-                <option value="lt10k">&lt; $10,000/mo</option>
-                <option value="10k-50k">$10,000 – $50,000/mo</option>
-                <option value="50k-250k">$50,000 – $250,000/mo</option>
-                <option value="gt250k">&gt; $250,000/mo</option>
-              </select>
+                <div
+                  className="text-2xl font-bold mb-1"
+                  style={{ color: '#F2EDE8' }}
+                >
+                  {tier.name}
+                </div>
+                <div
+                  className="text-5xl font-black mb-2"
+                  style={{ color: '#D4AF37', fontWeight: 900 }}
+                >
+                  {tier.rate}
+                </div>
+                <div className="font-mono text-xs mb-4" style={{ color: 'rgba(255,255,255,0.40)' }}>
+                  {tier.threshold}
+                </div>
+                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.50)', lineHeight: '1.6' }}>
+                  {tier.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs mt-4" style={{ color: 'rgba(255,255,255,0.30)' }}>
+            Reward rates are applied to new net buy per epoch. If total demand exceeds the epoch budget,
+            all rates are proportionally scaled. No partner receives more than the budget allows.
+          </p>
+        </div>
+
+        {/* Connect wallet card */}
+        <div
+          className="rounded-2xl p-8 mb-10"
+          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(212,175,55,0.20)' }}
+        >
+          <h2 className="font-bold mb-2" style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff' }}>
+            Connect Wallet to Deploy PartnerVault
+          </h2>
+          <p className="text-sm mb-6" style={{ color: 'rgba(255,255,255,0.50)' }}>
+            PartnerVault deployment goes live with mainnet launch on Base. Connect your wallet to express
+            interest and be notified when onboarding opens.
+          </p>
+          <button
+            className="px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200"
+            style={{
+              background: 'rgba(255,255,255,0.06)',
+              border: '1px solid rgba(255,255,255,0.10)',
+              color: '#ffffff',
+            }}
+            onClick={() => alert('Wallet connection and PartnerVault deployment goes live with mainnet launch.')}
+          >
+            Connect Wallet
+          </button>
+          <div
+            className="mt-4 inline-flex items-center gap-2 text-xs px-3 py-2 rounded-lg"
+            style={{
+              color: 'rgba(245,180,50,0.80)',
+              background: 'rgba(245,180,50,0.06)',
+              border: '1px solid rgba(245,180,50,0.15)',
+            }}
+          >
+            <span>⚠</span> Partner onboarding goes live with mainnet launch. No transactions will be initiated at this time.
+          </div>
+        </div>
+
+        {/* Interest form */}
+        <div
+          className="rounded-2xl p-8"
+          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+        >
+          <h2 className="font-bold mb-2" style={{ fontSize: '20px', fontWeight: 700, color: '#ffffff' }}>
+            Express Partner Interest
+          </h2>
+          <p className="text-sm mb-6" style={{ color: 'rgba(255,255,255,0.50)' }}>
+            Register your interest now and get early access to partner onboarding when mainnet launches.
+          </p>
+
+          {submitted ? (
+            <div className="text-center py-10">
+              <div className="text-4xl mb-4">🐟</div>
+              <h3
+                className="font-bold mb-2"
+                style={{ fontSize: '20px', color: '#D4AF37' }}
+              >
+                Interest Registered
+              </h3>
+              <p style={{ color: 'rgba(255,255,255,0.50)', fontSize: '14px' }}>
+                We&apos;ll be in touch when partner onboarding goes live. Welcome to the Prospereum ecosystem.
+              </p>
             </div>
-            <button
-              type="submit"
-              className="w-full py-3 bg-[#D4AF37] text-black font-bold rounded hover:bg-[#b8962e] transition-colors"
-            >
-              Submit Interest →
-            </button>
-          </form>
-        )}
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label
+                  className="block text-sm font-semibold mb-2"
+                  style={{ color: 'rgba(255,255,255,0.70)' }}
+                >
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={form.company}
+                  onChange={(e) => setForm({ ...form, company: e.target.value })}
+                  placeholder="Acme Corp"
+                  style={{ ...inputStyle }}
+                />
+              </div>
+              <div>
+                <label
+                  className="block text-sm font-semibold mb-2"
+                  style={{ color: 'rgba(255,255,255,0.70)' }}
+                >
+                  Contact Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  placeholder="partnerships@yourcompany.com"
+                  style={{ ...inputStyle }}
+                />
+              </div>
+              <div>
+                <label
+                  className="block text-sm font-semibold mb-2"
+                  style={{ color: 'rgba(255,255,255,0.70)' }}
+                >
+                  Expected Monthly PSRE Buy Volume (USD equivalent)
+                </label>
+                <select
+                  required
+                  value={form.volume}
+                  onChange={(e) => setForm({ ...form, volume: e.target.value })}
+                  style={{ ...inputStyle }}
+                >
+                  <option value="" style={{ background: '#1a1a1c' }}>Select a range…</option>
+                  <option value="lt10k" style={{ background: '#1a1a1c' }}>&lt; $10,000/mo</option>
+                  <option value="10k-50k" style={{ background: '#1a1a1c' }}>$10,000 – $50,000/mo</option>
+                  <option value="50k-250k" style={{ background: '#1a1a1c' }}>$50,000 – $250,000/mo</option>
+                  <option value="gt250k" style={{ background: '#1a1a1c' }}>&gt; $250,000/mo</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 rounded-xl font-semibold text-sm transition-all duration-200"
+                style={{
+                  background: 'rgba(212,175,55,0.12)',
+                  border: '1px solid rgba(212,175,55,0.55)',
+                  color: '#D4AF37',
+                }}
+              >
+                Submit Interest →
+              </button>
+            </form>
+          )}
+        </div>
+
       </div>
     </div>
   );
