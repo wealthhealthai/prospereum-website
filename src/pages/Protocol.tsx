@@ -46,20 +46,26 @@ function Section({
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <div className="relative h-screen overflow-hidden">
-      {/* LiquidMetal background — position: absolute so it doesn't break scrolling */}
-      <div className="absolute inset-0">
+    <div className="relative h-screen overflow-hidden bg-black flex items-center justify-center">
+      {/* Sphere — liquid metal clipped to a circle by shape:"circle" in the shader */}
+      <div
+        style={{
+          width: "min(78vh, 78vw)",
+          height: "min(78vh, 78vw)",
+          position: "relative",
+          flexShrink: 0,
+        }}
+      >
         <LiquidMetal
           {...liquidMetalPresets[2].params}
+          shape="circle"
+          colorBack="#000000"
+          scale={0.9}
           worldWidth={900}
           worldHeight={900}
-          scale={1}
           style={{ width: "100%", height: "100%" }}
         />
       </div>
-
-      {/* Dark overlay for text legibility */}
-      <div className="absolute inset-0 bg-[#0C0C0E]/55 z-[5]" />
 
       {/* Content overlay */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
